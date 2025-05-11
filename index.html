@@ -1,59 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Site Under Maintenance</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DarkTruthReport - Investigative Journalism</title>
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    body {
-      background-color: #000;
-      color: #fff;
-      font-family: 'Arial', sans-serif;
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #000;
+  color: #f0f0f0;
+  text-shadow: 1px 1px 3px #fff;
+  cursor: url('http://www.rw-designer.com/cursor-extern.php?id=137514'), auto; /* Replace with your actual cursor URL */
+}
+
+    header {
+      background-color: #000000;
+      padding: 20px;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      height: 100vh;
-      flex-direction: column;
+      border-bottom: 1px solid #333;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      text-shadow: 2px 2px 5px #fff;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: #f0f0f0;
+      text-decoration: none;
+      font-weight: bold;
+      text-shadow: 1px 1px 3px #fff;
+    }
+
+    nav ul li a:hover {
+      color: #ff4c4c;
+    }
+
+    .hero {
+      padding: 80px 10px;
       text-align: center;
+      background: #000000;
+      max-width: 80%;
+      margin: auto;
     }
 
-    .logo {
-      width: 80px;
-      margin-bottom: 20px;
-    }
-
-    h1 {
+    .hero h2 {
       font-size: 2.5rem;
       margin-bottom: 10px;
+      text-shadow: 2px 2px 5px #fff;
     }
 
-    p {
+    .hero p {
+      font-size: 1.2rem;
+      color: #ffffff;
+      text-shadow: 1px 1px 3px #fff;
+    }
+
+    .section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+      background-color: #000;
+    }
+
+    .section h3 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px #fff;
+    }
+
+    .article-preview {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #000000;
+    }
+
+    .article-preview h4 {
+      margin: 0 0 10px;
+      color: #ff4c4c;
+      text-shadow: 1px 1px 3px #fff;
+    }
+
+    .article-preview p {
+      color: #ccc;
+      text-shadow: 1px 1px 3px #fff;
+    }
+
+    footer {
+      background: #000;
+      padding: 20px;
+      text-align: center;
+      color: #000000;
+      border-top: 1px solid #000000;
+    }
+
+    .report {
+      background-color: #1a1a1a;
+      margin-bottom: 20px;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #000000;
+    }
+
+    .report-header {
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      padding: 15px 20px;
+      font-size: 1.2rem;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-shadow: 1px 1px 3px #fff;
+    }
+
+    .report-header:hover {
+      background-color: #000000;
+    }
+
+    .report-content {
+      display: none;
+      padding: 20px;
+      color: #ccc;
+    }
+
+    .report-content img {
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+    }
+
+    .view-report-btn {
+      display: inline-block;
+      background-color: #00bcd4;
+      color: #000;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-top: 10px;
+      text-shadow: 1px 1px 3px #fff;
+    }
+
+    .tips-sent {
+      background-color: #000000;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      margin: 40px 0;
+      border-radius: 8px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .tips-sent h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 3px #fff;
+    }
+
+    .tips-sent p {
       font-size: 1.2rem;
       color: #ccc;
-      max-width: 500px;
+      text-shadow: 1px 1px 3px #fff;
     }
 
-    .spinner {
-      margin-top: 30px;
-      width: 40px;
-      height: 40px;
-      border: 4px solid rgba(255, 255, 255, 0.3);
-      border-top: 4px solid #fff;
+    #top-investigators {
+      background-color: #202020;
+      padding: 40px 20px;
+      margin-top: 40px;
+    }
+
+    #top-investigators h3 {
+      font-size: 2rem;
+      color: #fff;
+      text-shadow: 2px 2px 5px #fff;
+      margin-bottom: 30px;
+    }
+
+    .investigator-box {
+      display: flex;
+      align-items: center;
+      background-color: #000000;
+      color: #000;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .investigator-pfp {
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
-      animation: spin 1s linear infinite;
+      margin-right: 20px;
     }
 
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
+    .investigator-info h4 {
+      margin: 0;
+      color: #fcfcfc;
+      font-size: 1.2rem;
+      text-shadow: 1px 1px 3px #ffffff;
     }
+
+    .investigator-info p {
+      color: #ffffff;
+      text-shadow: 1px 1px 3px #ffffff;
+    }
+
+    .investigator-info a {
+      color: #ff0000;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
   </style>
+<script>
+  function toggleReport(button) {
+    const reportContent = button.nextElementSibling;
+    const icon = button.querySelector('.toggle-icon');
+    if (reportContent.style.display === 'block') {
+      reportContent.style.display = 'none';
+      icon.textContent = '+';
+    } else {
+      reportContent.style.display = 'block';
+      icon.textContent = '-';
+    }
+  }
+
+  let tipsSentCount = 35;
+  function updateTipsSent() {
+    const tipsCountElement = document.getElementById("tips-sent-count");
+    tipsCountElement.textContent = tipsSentCount;
+  }
+
+  window.onload = () => {
+    updateTipsSent();
+
+    // Lower audio volume (range: 0.0 to 1.0)
+    const audio = document.getElementById("bg-audio");
+    if (audio) audio.volume = 0.2;
+  };
+</script>
 </head>
 <body>
-  <img src="https://cdn-icons-png.flaticon.com/512/342/342359.png" alt="Logo" class="logo">
-  <h1>We'll Be Back Soon</h1>
-  <p>Our site is currently undergoing scheduled maintenance. Please check back later.</p>
-  <div class="spinner"></div>
+<audio id="bg-audio" autoplay>
+  <source src="background.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
+  <header>
+    <h1>DarkTruthReport</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#investigations">Investigations</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Independent Investigative Journalism</h2>
+    <p>Uncovering hidden truths. Reporting facts. Empowering the public.</p>
+  </section>
+
+  <section class="tips-sent">
+    <h2>Tips Sent Count</h2>
+    <p id="tips-sent-count">Loading...</p>
+  </section>
+
+  <section id="investigations" class="section">
+    <h3>Latest Reports</h3>
+    <div class="report">
+      <button class="report-header" onclick="toggleReport(this)">
+        <span>ILYA LYKHO [Age 23]</span>
+        <span class="toggle-icon">+</span>
+      </button>
+      <div class="report-content">
+        <img src="1.png" alt="Report Image">
+        <p>Case Overview: Ilya Lykho is currently under investigation for allegedly sending inappropriate and explicit images to minors. Multiple tips submitted to the DarkTruthReport team have led to a compiled file of screenshots, conversations, and social media activity associated with the suspect. Evidence includes direct messages and image logs tied to Instagram and Telegram accounts. Law enforcement has been notified and a formal inquiry is pending.</p>
+        <a href="https://files.catbox.moe/ld2fdc.pdf" class="view-report-btn">View Report</a>
+      </div>
+    </div>
+    <div class="report">
+      <button class="report-header" onclick="toggleReport(this)">
+        <span>Colin Moffett [Age 18]</span>
+        <span class="toggle-icon">+</span>
+      </button>
+      <div class="report-content">
+        <img src="c.png" alt="Report Image">
+        <p>Case Overview: Colin Moffett, 18, is currently under investigation for allegedly possessing and distributing child pornography. The Idaho Internet Crimes Against Children (ICAC) Task Force initiated the investigation after receiving a cyber tip. A search warrant led to the seizure of Moffett's cellphone, which contained multiple files of child pornography and messages discussing his sexual interest in children. 
+Department of Justice
++1
+Ars Technica
++1
+
+Moffett was residing in Idaho at the time of the offenses and later moved to California, where he was arrested. He has been sentenced to seven years in federal prison, followed by 15 years of supervised release, and is required to register as a sex offender. Additionally, he must pay $3,000 in restitution to a victim depicted in the images he possessed. </p>
+        <a href="https://files.catbox.moe/n1312x.pdf" class="view-report-btn">View Report</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="top-investigators" class="section">
+    <h3>Top Investigators</h3>
+    <div class="investigator-box">
+      <img src="Kyle.png" alt="Investigator 1" class="investigator-pfp">
+      <div class="investigator-info">
+        <h4>Kyle Smith</h4>
+        <p>Lead Investigator, Cyber Crimes Division</p>
+        <p><a href="https://t.me/kyleAEN">Contact</a></p>
+      </div>
+    </div>
+  </section>
+
+<section id="about" class="section">
+  <h3>Our Mission</h3>
+  <p>DarkTruthReport is committed to rigorous, ethical journalism with a relentless focus on uncovering the truth and bringing justice to the forefront. Our team of dedicated investigators works tirelessly to expose the hidden stories that demand attention, from cybercrimes to corruption, ensuring that no stone is left unturned.</p>
+  <p>We believe that investigative journalism plays a pivotal role in holding the powerful accountable, shedding light on injustices, and empowering the public with the facts they need. Our work is guided by a passion for truth and a commitment to providing the most accurate and reliable reports.</p>
+  <p>If you have the skills, the drive, and the determination to uncover hidden truths, we invite you to join us. Become part of a team that is making a real impact in the world through dedicated, fearless investigation. Together, we can bring justice and expose the stories that matter.</p>
+</section>
+
+  <section id="contact" class="section">
+    <h3>Contact</h3>
+    <p>Tips: https://t.me/kyleAEN</p>
+    <p>Telegram: @DarkTruthReport</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 DarkTruthReport. All rights reserved.</p>
+  </footer>
 </body>
 </html>
